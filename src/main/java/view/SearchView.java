@@ -5,14 +5,13 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
-import application.SceneCustom;
 import controller.SearchController;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import utils.ButtonCustom;
+import model.ImageFiles;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -39,7 +38,7 @@ public class SearchView {
 
         tableView = new TableView<>();
 
-        ImageView imageView = new ImageView(SceneCustom.searchIcon);
+        ImageView imageView = new ImageView(ImageFiles.searchIcon);
         imageView.setFitWidth(18);
         imageView.setFitHeight(18);
         searchButton = new Button();

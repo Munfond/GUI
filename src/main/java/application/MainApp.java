@@ -2,19 +2,18 @@ package application;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
 
-import utils.ResourcesPaths;
+
+import model.ImageFiles;
 
 public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         SceneCustom sceneCustom = new SceneCustom();
-        Image logo = new Image(ResourcesPaths.pathOfLogo);
 
         primaryStage.setTitle("BKOLRanking");
-        primaryStage.getIcons().add(logo);
+        primaryStage.getIcons().add(ImageFiles.logo);
         primaryStage.setScene(sceneCustom.getScene());
         primaryStage.show();
     }

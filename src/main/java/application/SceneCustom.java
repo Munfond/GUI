@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import model.CsvFileNameReader;
+import model.ImageFiles;
 import utils.ButtonCustom;
 import utils.ResourcesPaths;
 import view.ChartView;
@@ -17,10 +17,6 @@ import view.SearchView;
 
 public class SceneCustom {
     private Scene scene;
-    public static final Image homeIcon = new Image(ResourcesPaths.pathOfHomeIcon);
-    public static final  Image searchIcon = new Image(ResourcesPaths.pathOfSearchIcon);
-    public static final  Image chartIcon = new Image(ResourcesPaths.pathOfChartIcon);
-    public static final  Image menuIcon = new Image(ResourcesPaths.pathOfMenuIcon);
 
     public SceneCustom() {
         ArrayList<String> keywords = CsvFileNameReader.getFileName();
@@ -32,12 +28,12 @@ public class SceneCustom {
 
 
         // Tạo nút với icon và văn bản
-        Button homeButton = ButtonCustom.createButtonWithIcon("Home", homeIcon);
-        Button searchButton = ButtonCustom.createButtonWithIcon("Search Table", searchIcon);
-        Button chartButton = ButtonCustom.createButtonWithIcon("KOL Chart", chartIcon);
+        Button homeButton = ButtonCustom.createButtonWithIcon("Home", ImageFiles.homeIcon);
+        Button searchButton = ButtonCustom.createButtonWithIcon("Search Table", ImageFiles.searchIcon);
+        Button chartButton = ButtonCustom.createButtonWithIcon("KOL Chart", ImageFiles.chartIcon);
 
         // Nút để mở rộng menu
-        Button menuButton = ButtonCustom.createButtonWithIcon("Menu", menuIcon);
+        Button menuButton = ButtonCustom.createButtonWithIcon("Menu", ImageFiles.menuIcon);
 
         // Tạo VBox chứa các nút
         VBox buttonBox = new VBox(10);

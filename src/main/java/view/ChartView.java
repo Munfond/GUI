@@ -2,7 +2,6 @@ package view;
 
 import java.util.ArrayList;
 
-import application.SceneCustom;
 import controller.ChartController;
 import javafx.collections.*;
 import javafx.scene.chart.BarChart;
@@ -16,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import model.ImageFiles;
 import utils.*;
 
 public class ChartView {
@@ -47,7 +47,7 @@ public class ChartView {
 
         // Load Chart Button
         Button loadChartButton = new Button();
-        ImageView imageView = new ImageView(SceneCustom.chartIcon);
+        ImageView imageView = new ImageView(ImageFiles.chartIcon);
         imageView.setFitWidth(20);
         imageView.setFitHeight(20);
         loadChartButton.setGraphic(imageView);
@@ -68,6 +68,9 @@ public class ChartView {
         VBox layout = new VBox(10, header, searchBar, barChart);
         layout.setStyle("-fx-padding: 20;");
         root.setCenter(layout);
+
+        loadChartButton.setOnAction(e -> {
+            loadChart(keywordComboBox.getValue());});
     }
 
     public BorderPane getRoot() {
