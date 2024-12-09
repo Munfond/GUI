@@ -1,0 +1,13 @@
+.table-view {
+  -fx-background-color: transparent; /* Làm nền trong suốt */
+  -fx-border-color: transparent;    /* Loại bỏ đường viền */
+}
+
+.table-view .column-header {
+  -fx-background-color: transparent; /* Làm header trong suốt */
+}
+
+.table-view .cell {
+  -fx-background-color: transparent; /* Làm ô dữ liệu trong suốt */
+  -fx-text-fill: black;              /* Giữ chữ màu đen hoặc tùy ý */
+}

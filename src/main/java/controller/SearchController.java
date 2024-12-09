@@ -8,12 +8,9 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import model.CsvReader;
 import model.KolRanking;
-import utils.AlertUtils;
+import utils.*;
 
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
 import java.util.List;
 
 public class SearchController {
@@ -40,15 +37,12 @@ public class SearchController {
 
         clearTable();
 
-        if ("All".equalsIgnoreCase(keyword)) {
-            loadAllCsvFiles();
+        
+        File csvFile = new File("src/main/resources/data", keyword + ".csv");
+        if (csvFile.exists()) {
+            loadCsvFile(csvFile);
         } else {
-            File csvFile = new File("src/main/resources/data", keyword + ".csv");
-            if (csvFile.exists()) {
-                loadCsvFile(csvFile);
-            } else {
-                AlertUtils.showError("Error", "File not found for keyword: " + keyword);
-            }
+            AlertUtils.showError("Error", "File not found for keyword: " + keyword);
         }
     }
 
@@ -56,21 +50,6 @@ public class SearchController {
     private void clearTable() {
         tableView.getItems().clear();
         tableView.getColumns().clear();
-    }
-
-
-    private void loadAllCsvFiles() {
-        File folder = new File("src/main/resources/data");
-        File[] csvFiles = folder.listFiles((dir, name) -> name.endsWith(".csv"));
-
-        if (csvFiles == null || csvFiles.length == 0) {
-            AlertUtils.showError("Error", "No CSV files found in the folder.");
-            return;
-        }
-
-        for (File csvFile : csvFiles) {
-            loadCsvFile(csvFile);
-        }
     }
 
     /**
@@ -140,26 +119,11 @@ public class SearchController {
                 } else {
                     setText(username);
                     setStyle("-fx-text-fill: blue; -fx-underline: true;");
-                    setOnMouseClicked(event -> openLinkInBrowser("https://x.com/" + username));
+                    setOnMouseClicked(event -> OpenLink.openLinkInBrowser("https://x.com/" + username));
                 }
             }
         };
     }
 
-    /**
-     * 
-     *
-     * @param url 
-     */
-    private void openLinkInBrowser(String url) {
-        try {
-            if (Desktop.isDesktopSupported()) {
-                Desktop.getDesktop().browse(URI.create(url));
-            } else {
-                AlertUtils.showError("Error", "Desktop is not supported on this platform.");
-            }
-        } catch (IOException e) {
-            AlertUtils.showError("Error", "Failed to open the URL: " + e.getMessage());
-        }
-    }
+
 }

@@ -34,7 +34,7 @@ public class ChartController {
         }
 
 
-        dataList.sort((a, b) -> Double.compare(b.getYValue().doubleValue(), a.getYValue().doubleValue()));
+        // dataList.sort((a, b) -> Double.compare(b.getYValue().doubleValue(), a.getYValue().doubleValue()));
         return FXCollections.observableArrayList(dataList.subList(0, Math.min(10, dataList.size())));
     }
 }

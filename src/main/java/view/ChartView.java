@@ -1,5 +1,8 @@
 package view;
 
+import java.util.ArrayList;
+
+import application.SceneCustom;
 import controller.ChartController;
 import javafx.collections.*;
 import javafx.scene.chart.BarChart;
@@ -9,6 +12,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,7 +25,7 @@ public class ChartView {
     private final ComboBox<String> keywordComboBox;
     private final ChartController chartController;
 
-    public ChartView(String[] keywords) {
+    public ChartView(ArrayList<String> keywords) {
         // Khởi tạo ChartController
         chartController = new ChartController();
 
@@ -39,11 +43,14 @@ public class ChartView {
         keywordComboBox = new ComboBox<>();
         keywordComboBox.setItems(FXCollections.observableArrayList(keywords));
         keywordComboBox.setPromptText("Select a keyword");
+        keywordComboBox.setStyle("-fx-background-color: #A9A9A9");
 
         // Load Chart Button
-        Button loadChartButton = new Button("Load Chart");
-        loadChartButton.setStyle("-fx-font-size: 14px; -fx-padding: 10;");
-        loadChartButton.setOnAction(e -> loadChart(keywordComboBox.getValue()));
+        Button loadChartButton = new Button();
+        ImageView imageView = new ImageView(SceneCustom.chartIcon);
+        imageView.setFitWidth(20);
+        imageView.setFitHeight(20);
+        loadChartButton.setGraphic(imageView);
 
         // Search bar
         HBox searchBar = new HBox(10, keywordComboBox, loadChartButton);
